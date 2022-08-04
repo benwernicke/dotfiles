@@ -1,98 +1,130 @@
 call plug#begin('~/.config/nvim/plugged')
-    Plug 'Chiel92/vim-autoformat'
-	Plug 'jiangmiao/auto-pairs'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-	Plug 'preservim/nerdcommenter'
-    Plug 'tomasr/molokai'
-
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'williamboman/nvim-lsp-installer'
-
+Plug 'jiangmiao/auto-pairs'
+Plug 'preservim/nerdcommenter'
+Plug 'tomasr/molokai'
+Plug 'itchyny/lightline.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-lua/plenary.nvim'
+Plug 'preservim/tagbar'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'junegunn/goyo.vim'
+Plug 'preservim/nerdtree'
+Plug 'vimwiki/vimwiki'
+Plug 'PhilRunninger/nerdtree-buffer-ops'
+Plug 'vim-autoformat/vim-autoformat'
 call plug#end()
 
-"Colorscheme and Syntax Highlighting -------------------------------------------------------------
+"Colorscheme and Syntax Highlighting
+"------------------------------------------------------------------------------
 set termguicolors
-"highlight Normal guibg=none guifg=none
-"export TERM=st-256colear
 syntax enable
 colorscheme molokai
 
-"Autocomplete-------------------------------------------------------------
-
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = "maintained",
+    ensure_installed = "all",
+    ignore_install = { "php", "phpdoc" },
     highlight = {
         enable = true,
         additional_vim_regex_highlighting = false,
-    },
+        },
     indent = {
         enable = true
-    },
-}
-
-local lsp_installer = require("nvim-lsp-installer")
-lsp_installer.on_server_ready(function(server)
-  local opts = {}
-  server:setup(opts)
-end)
-
+        },
+    incremental_selection = {
+        enable = true,
+        keymaps = {
+            init_selection = " tv",
+            node_incremental = "M",
+            node_decremental = "m",
+            },
+        },
+    }
 EOF
 
-"Autoformat ----------------------------------------------------
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-let g:autoformat_remove_trailing_spaces = 0
-au BufWrite * :Autoformat
+" Lightline
+let g:lightline = {
+            \ 'colorscheme': 'molokai',
+            \ }
 
-"Airline -------------------------------------------------------------
-" Disable tabline close button
-let g:airline#extensions#tabline#show_close_button = 0
-let g:airline#extensions#tabline#show_tab_count = 0
-let g:airline#extensions#tabline#fnamecollapse = 1
-let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_splits = 0
-let g:airline#extensions#tabline#show_tab_type = 0
-let g:airline#extensions#tabline#fnamemod = ':t'
+"vim-autoformat
+"------------------------------------------------------------------------------
+let g:autoformat_autoindent = 1
+let g:autoformat_retab = 1
+let g:autoformat_remove_trailing_spaces = 1
+let g:formatterpath = ['/usr/bin/clang-format']
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#tabs_label = ''
-let g:airline#extensions#tabline#show_tab_nr = 0
-let g:airline_section_b = ''
-let g:airline_section_c = ''
-let g:airline_section_x = ''
-let g:airline_section_y = '%{strftime("%H:%M")}'
-let g:airline_section_z = ''
-"Non Plugin Stuff -------------------------------------------------------------
+"Non Plugin Stuff
+"------------------------------------------------------------------------------
 set tabstop=4
 set softtabstop=4
 set expandtab
 set shiftwidth=4
+set nocompatible
+set encoding=UTF-8
+
+set splitright
+
+set noerrorbells
+set incsearch
+set scrolloff=8
+
+set colorcolumn=80
 
 set relativenumber number
 set clipboard=unnamedplus
 set encoding=utf-8
 let mapleader=" "
 
+set textwidth=80
+
+"Nerd Tree / Tagbar
+"------------------------------------------------------------------------------
+nmap <leader>mt :TagbarToggle<cr>
+nmap <leader>nt :NERDTreeToggle<cr>
 
 "Key Maps
-nmap <leader><Tab> gt
-nmap <leader><S-Tab> gT
-nmap <leader><Return> :tabnew
+"------------------------------------------------------------------------------
+nmap <A-l> gt
+nmap <A-h> gT
+nmap <leader><Return> :tabnew<cr>
+
+nmap <leader>tff :Telescope find_files<cr>
+nmap <leader>tlg :Telescope live_grep<cr>
 
 
-"nmap gd :lua vim.lsp.buf.definition()<cr>
-nmap gd :lua vim.lsp.buf.definition()<cr>
-nmap gD :lua vim.lsp.buf.declaration()<cr>
-nmap gi :lua vim.lsp.buf.implementation()<cr>
-nmap gw :lua vim.lsp.buf.document_symbol()<cr>
-nmap gw :lua vim.lsp.buf.workspace_symbol()<cr>
-nmap gr :lua vim.lsp.buf.references()<cr>
-"nmap gt :lua vim.lsp.buf.type_definition()<cr>
-nmap K  :lua vim.lsp.buf.hover()<cr>
-nmap ck :lua vim.lsp.buf.signature_help()<cr>
-"nmap af :lua vim.lsp.buf.code_action()<cr>
-nmap rn :lua vim.lsp.buf.rename()<cr>
+nmap tt :terminal<cr>i
+
+nmap <leader>gg :Goyo<cr>
+
+autocmd FileType c nmap <leader>lr :!./cbuild && ./out<cr>
+autocmd FileType c nmap <leader>lR :!./cbuild && ./out
+autocmd FileType c nmap <leader>lg ttgdb -tui out<cr>
+autocmd FileType c nmap <leader>lc :! ./cbuild clean
+autocmd FileType c nmap <leader>cf :r! sgen clang_format<cr>
+
+autocmd FileType c nmap <leader>sg :! squirrel get
+autocmd FileType c nmap <leader>su :! squirrel update
+autocmd FileType c nmap <leader>ec :vs cbuild.c
+
+autocmd FileType lisp nmap <leader>lr :! clisp %<cr>
+
+autocmd FileType latex nmap <leader>la :r! sgen latex_article<cr>
+autocmd FileType latex nmap <leader>lr :! xelatex % && pkill -HUP mupdf<cr>
+autocmd FileType latex nmap <leader>ls :! mupdf $(echo % \| rev \| cut -c4- \| rev)pdf & disown<cr><cr>
+
+nnoremap J :m .+1<CR>==
+nnoremap K :m .-2<CR>==
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+nmap <C-h> <C-w>h
+vmap <C-j> <C-w>j
+vmap <C-k> <C-w>k
+vmap <C-l> <C-w>l
+vmap <C-h> <C-w>h
+nmap <leader>nh :noh<cr>
+nmap <leader>v :vs<cr>

@@ -1,17 +1,23 @@
 call plug#begin('~/.config/nvim/plugged')
+
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdcommenter'
 Plug 'tomasr/molokai'
 Plug 'itchyny/lightline.vim'
+
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 Plug 'nvim-lua/plenary.nvim'
 Plug 'preservim/tagbar'
+
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+
 Plug 'junegunn/goyo.vim'
 Plug 'preservim/nerdtree'
 Plug 'vimwiki/vimwiki'
 Plug 'PhilRunninger/nerdtree-buffer-ops'
 Plug 'vim-autoformat/vim-autoformat'
+
 call plug#end()
 
 "Colorscheme and Syntax Highlighting

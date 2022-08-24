@@ -5,7 +5,9 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char* font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+// static char* font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+static char* font = "Fira Code:pixelsize=19:antialias=true:autohint=true";
+static char* font2 = "Fira Code:pixelsize=19:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -92,37 +94,48 @@ char* termname = "st-256color";
  *	stty tabs
  */
 unsigned int tabspaces = 8;
+/* Base16 Monokai colors - Wimer Hazenberg (http://www.monokai.nl) */
+static const char base00[] = "#272822"; // "#282828"
+static const char base01[] = "#e73c50";
+static const char base02[] = "#a6e22e";
+static const char base03[] = "#e6db74";
+static const char base04[] = "#66d9ef";
+static const char base05[] = "#ae81ff";
+static const char base06[] = "#a1efe4";
+static const char base07[] = "#e8e8e3";
+static const char base08[] = "#64645e";
+static const char base09[] = "#f92772";
+static const char base0A[] = "#9ec400";
+static const char base0B[] = "#e7c547";
+static const char base0C[] = "#7aa6da";
+static const char base0D[] = "#b77ee0";
+static const char base0E[] = "#54ced6";
+static const char base0F[] = "#ffffff"; /* Terminal colors (16 first used in escape sequence) */
 
-/* Terminal colors (16 first used in escape sequence) */
 static const char* colorname[] = {
-    /* 8 normal colors */
-    "#1b1b1b",
-    "#f5669c",
-    "#b0e05e",
-    "#fef26c",
-    "#00afff",
-    "#af87ff",
-    "#50cdfe",
-    "gray90",
-    "#545454",
+    base00,
+    base01,
+    base02,
+    base03,
+    base04,
+    base05,
+    base06,
+    base07,
 
-    /* 8 bright colors */
-    "#bbbbbb",
-    "#fa2573",
-    "#97e123",
-    "#dfd460",
-    "#0f7fcf",
-    "#8700ff",
-    "#42a7cf",
-    "#ffffff",
-
+    base08,
+    base09,
+    base0A,
+    base0B,
+    base0C,
+    base0D,
+    base0E,
+    base0F,
     [255] = 0,
-
-    /* more colors can be added after 255 to use with DefaultXX */
     "#cccccc",
     "#555555",
-    "#bbbbbb", /* default foreground colour */
-    "#1b1b1b", /* default background colour */
+    //"#bbbbbb", //[ > default foreground colour < ]
+    "#ffffff", //[ > default foreground colour < ]
+    "#1b1b1b", //[ > default background colour < ]
 };
 
 /*
@@ -194,10 +207,8 @@ static Shortcut shortcuts[] = {
     { ControlMask, XK_Print, toggleprinter, { .i = 0 } },
     { ShiftMask, XK_Print, printscreen, { .i = 0 } },
     { XK_ANY_MOD, XK_Print, printsel, { .i = 0 } },
-    { TERMMOD, XK_plus, zoom, { .f = +1 } },
-    { TERMMOD, XK_minus, zoom, { .f = -1 } },
-    //{ TERMMOD, XK_Prior, zoom, { .f = +1 } },
-    //{ TERMMOD, XK_Next, zoom, { .f = -1 } },
+    { MODKEY, XK_plus, zoom, { .f = +1 } },
+    { MODKEY, XK_minus, zoom, { .f = -1 } },
     { TERMMOD, XK_Home, zoomreset, { .f = 0 } },
     { MODKEY, XK_c, clipcopy, { .i = 0 } },
     { MODKEY, XK_v, clippaste, { .i = 0 } },

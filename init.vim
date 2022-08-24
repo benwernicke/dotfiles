@@ -2,7 +2,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdcommenter'
-Plug 'tomasr/molokai'
 Plug 'itchyny/lightline.vim'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -18,13 +17,35 @@ Plug 'vimwiki/vimwiki'
 Plug 'PhilRunninger/nerdtree-buffer-ops'
 Plug 'vim-autoformat/vim-autoformat'
 
+" New Color themes
+Plug 'tomasr/molokai'
+"Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+"Plug 'shaunsingh/moonlight.nvim'
+"Plug 'arcticicestudio/nord-vim'
+"Plug 'dracula/vim', { 'name': 'dracula' }
+"Plug 'romgrk/doom-one.vim'
+"Plug 'phanviet/vim-monokai-pro'
+"Plug 'squarefrog/tomorrow-night.vim'
+"Plug 'NLKNguyen/papercolor-theme'
+"Plug 'pappasam/papercolor-theme-slim'
+
 call plug#end()
 
 "Colorscheme and Syntax Highlighting
 "------------------------------------------------------------------------------
 set termguicolors
 syntax enable
+"set background=light
 colorscheme molokai
+"colorscheme doom-one
+"colorscheme PaperColor
+"colorscheme dracula
+"colorscheme monokai_pro
+"colorscheme oceanicnext
+"colorscheme tomorrow-night
+"colorscheme moonlight
+"colorscheme tokyonight
+"colorscheme nord
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -48,20 +69,21 @@ require'nvim-treesitter.configs'.setup {
     }
 EOF
 
-" Lightline
+"Lightline
 let g:lightline = {
             \ 'colorscheme': 'molokai',
             \ }
+"let g:lightline = {'colorscheme': 'tokyonight'}
 
 "vim-autoformat
-"------------------------------------------------------------------------------
+"-------------------------------------------------------------------------------
 let g:autoformat_autoindent = 1
 let g:autoformat_retab = 1
 let g:autoformat_remove_trailing_spaces = 1
 let g:formatterpath = ['/usr/bin/clang-format']
 
 "Non Plugin Stuff
-"------------------------------------------------------------------------------
+"-------------------------------------------------------------------------------
 set tabstop=4
 set softtabstop=4
 set expandtab
@@ -76,13 +98,12 @@ set incsearch
 set scrolloff=8
 
 set colorcolumn=80
+set textwidth=80
 
 set relativenumber number
 set clipboard=unnamedplus
 set encoding=utf-8
 let mapleader=" "
-
-set textwidth=80
 
 "Nerd Tree / Tagbar
 "------------------------------------------------------------------------------

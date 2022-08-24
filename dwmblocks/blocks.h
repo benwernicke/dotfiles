@@ -4,8 +4,11 @@ static const Block blocks[] = {
     /*Icon*/ /*Command*/ /*Update Interval*/ /*Update Signal*/
     { " ", "", 6000, 0 },
     { "", "sensors | awk '/Core 0/ {print $3}'", 10, 0 },
-    { "", "pfetch | grep 'memory' | grep -Eo '[0-9]?[0-9]{3}M / ....M'", 30,
-        0 },
+    //{ "", "pfetch | grep 'memory' | grep -Eo '[0-9]?[0-9]{3}M / ....M'", 30,
+    // 0
+    //},
+    { "", "cpu", 30, 0 },
+    { "", "memory", 30, 0 },
     { "", "clock", 1, 0 },
     { "", "battery", 60, 0 },
 };

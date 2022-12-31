@@ -12,11 +12,12 @@ static char* fonts[] = {"Fira Code:pixelsize=16:antialias=true:autohint=true",};
 static char dmenufont[] = "Fira Code:pixelsize=16:antialias=true:autohint=true";
 
 static const char norm_fg[] = "#eeeeee";
-static const char norm_bg[] = "#1b1b1b";
-static const char norm_border[] = "#1b1b1b";
+static const char norm_bg[] = "#282c34";
+static const char norm_border[] = "#282c34";
 
-static const char sel_fg[] = "#1b1b1b";
-static const char sel_bg[] = "#a9dc76";
+static const char sel_fg[] = "#282c34";
+//static const char sel_bg[] = "#a9dc76";
+static const char sel_bg[] = "#34ed37";
 static const char sel_border[] = "#a9dc76";
 
 static const char* colors[][3] = {

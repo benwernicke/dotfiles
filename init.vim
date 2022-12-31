@@ -11,41 +11,20 @@ Plug 'preservim/tagbar'
 
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 
-Plug 'junegunn/goyo.vim'
 Plug 'preservim/nerdtree'
 Plug 'vimwiki/vimwiki'
 Plug 'PhilRunninger/nerdtree-buffer-ops'
 Plug 'vim-autoformat/vim-autoformat'
-
-" New Color themes
-Plug 'tomasr/molokai'
-"Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-"Plug 'shaunsingh/moonlight.nvim'
-"Plug 'arcticicestudio/nord-vim'
-"Plug 'dracula/vim', { 'name': 'dracula' }
-"Plug 'romgrk/doom-one.vim'
-"Plug 'phanviet/vim-monokai-pro'
-"Plug 'squarefrog/tomorrow-night.vim'
-"Plug 'NLKNguyen/papercolor-theme'
-"Plug 'pappasam/papercolor-theme-slim'
+Plug 'benwernicke/duum'
 
 call plug#end()
 
 "Colorscheme and Syntax Highlighting
 "------------------------------------------------------------------------------
 set termguicolors
+colorscheme duum
+let g:duum_terminal_colors = 1
 syntax enable
-"set background=light
-colorscheme molokai
-"colorscheme doom-one
-"colorscheme PaperColor
-"colorscheme dracula
-"colorscheme monokai_pro
-"colorscheme oceanicnext
-"colorscheme tomorrow-night
-"colorscheme moonlight
-"colorscheme tokyonight
-"colorscheme nord
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -70,10 +49,7 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 "Lightline
-let g:lightline = {
-            \ 'colorscheme': 'molokai',
-            \ }
-"let g:lightline = {'colorscheme': 'tokyonight'}
+let g:lightline = {'colorscheme': 'duum'}
 
 "vim-autoformat
 "-------------------------------------------------------------------------------
@@ -90,14 +66,14 @@ set expandtab
 set shiftwidth=4
 set nocompatible
 set encoding=UTF-8
-
+set title
 set splitright
-
 set noerrorbells
 set incsearch
 set scrolloff=8
 
-set colorcolumn=80
+"set colorcolumn=80
+set nowrap
 set textwidth=80
 
 set relativenumber number
@@ -121,8 +97,6 @@ nmap <leader>tlg :Telescope live_grep<cr>
 
 
 nmap tt :terminal<cr>i
-
-nmap <leader>gg :Goyo<cr>
 
 autocmd FileType c nmap <leader>lr :!./cbuild && ./out<cr>
 autocmd FileType c nmap <leader>lR :!./cbuild && ./out

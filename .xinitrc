@@ -48,6 +48,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-xrandr --output HDMI-1 --mode 1680x1050 &
+#xrandr --output HDMI-1 --mode 1680x1050 &
 dwmblocks &
 exec /usr/local/bin/dwm

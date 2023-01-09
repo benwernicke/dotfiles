@@ -30,6 +30,8 @@ static const char* colors[][3] = {
 static const char* tags[] = { "ʕ·͡ᴥ·ʔ", "ԅ(≖‿≖ԅ)", "(╯°□°)╯", "(^з^)♪♬",
     "O=('-'Q)", "ʕ♥ᴥ♥ʔ" };
 
+
+
 static const Rule rules[] = {
     // xprop(1):
     // WM_CLASS(STRING) = instance, class

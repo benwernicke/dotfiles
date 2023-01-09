@@ -16,6 +16,8 @@ alias clip='xclip -sel c'
 alias paste='xclip -o'
 alias pm='pulsemixer'
 
+alias bb="./beaver"
+
 alias fixme='grep TODO --line-number -H -R'
 
 alias ss='shutdown 0'
@@ -28,6 +30,7 @@ alias vim='nvim'
 
 alias font='setfont iso01-12x22'
 alias sx='startx'
+alias make='make -j4'
 
 set -o vi
 

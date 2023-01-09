@@ -2,7 +2,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdcommenter'
-Plug 'itchyny/lightline.vim'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -14,7 +13,7 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'preservim/nerdtree'
 Plug 'vimwiki/vimwiki'
 Plug 'PhilRunninger/nerdtree-buffer-ops'
-Plug 'vim-autoformat/vim-autoformat'
+"Plug 'vim-autoformat/vim-autoformat'
 Plug 'benwernicke/duum'
 
 call plug#end()
@@ -49,14 +48,14 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 "Lightline
-let g:lightline = {'colorscheme': 'duum'}
+"let g:lightline = {'colorscheme': 'duum'}
 
 "vim-autoformat
 "-------------------------------------------------------------------------------
-let g:autoformat_autoindent = 1
-let g:autoformat_retab = 1
-let g:autoformat_remove_trailing_spaces = 1
-let g:formatterpath = ['/usr/bin/clang-format']
+"let g:autoformat_autoindent = 1
+"let g:autoformat_retab = 1
+"let g:autoformat_remove_trailing_spaces = 1
+"let g:formatterpath = ['/usr/bin/clang-format']
 
 "Non Plugin Stuff
 "-------------------------------------------------------------------------------

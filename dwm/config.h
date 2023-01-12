@@ -186,5 +186,5 @@ static Signal signals[] = {
 	{ "quit",           quit },
 	{ "setlayout",      setlayout },
 	{ "setlayoutex",    setlayoutex },
-    { "cl-refresh",     cl_refresh_caller }
+    { "refresh",     cl_refresh_caller }
 };

@@ -7,7 +7,6 @@
 
 #include "drw.h"
 #include "util.h"
-#include "color_loader.h"
 
 #define UTF_INVALID 0xFFFD
 #define UTF_SIZ     4
@@ -196,18 +195,8 @@ drw_clr_create(Drw *drw, Clr *dest, const char *clrname)
 /* Wrapper to create color schemes. The caller has to call free(3) on the
  * returned color scheme when done using it. */
 Clr *
-drw_scm_create(Drw *drw, int scm_index, size_t clrcount)
+drw_scm_create(Drw *drw, const char *clrnames[], size_t clrcount)
 {
-    const char* clrnames[3] = { 0 };
-    if(scm_index == 0) {
-        clrnames[0] = cl_get_fg();
-        clrnames[1] = cl_get_bg();
-        clrnames[3] = cl_get_border();
-    } else {
-        clrnames[0] = cl_get_sel_fg();
-        clrnames[1] = cl_get_sel_bg();
-        clrnames[3] = cl_get_sel_border();
-    }
 	size_t i;
 	Clr *ret;
 

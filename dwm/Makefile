@@ -3,7 +3,7 @@
 
 include config.mk
 
-SRC = drw.c dwm.c util.c color_loader.c
+SRC = drw.c dwm.c util.c
 OBJ = ${SRC:.c=.o}
 
 all: options dwm

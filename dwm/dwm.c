@@ -1602,7 +1602,6 @@ setmfact(const Arg *arg)
 void
 setup(void)
 {
-	int i;
 	XSetWindowAttributes wa;
 	Atom utf8string;
 

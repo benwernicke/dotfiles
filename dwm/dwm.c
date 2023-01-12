@@ -282,6 +282,16 @@ static Window root, wmcheckwin;
 /* compile-time check if all tags fit into an unsigned int bit array. */
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
 
+void refresh_scheme(void) {
+    if (scheme) {
+        free(scheme[0]);
+        free(scheme[1]);
+    }
+    scheme = ecalloc(2, sizeof(Clr*));
+	for (int i = 0; i < 2; i++)
+		scheme[i] = drw_scm_create(drw, i, 3);
+}
+
 /* function implementations */
 void
 applyrules(Client *c)
@@ -1630,9 +1640,14 @@ setup(void)
 	cursor[CurResize] = drw_cur_create(drw, XC_sizing);
 	cursor[CurMove] = drw_cur_create(drw, XC_fleur);
 	/* init appearance */
-	scheme = ecalloc(2, sizeof(Clr *));
-	for (i = 0; i < 2; i++)
-		scheme[i] = drw_scm_create(drw, i, 3);
+
+    cl_refresh();
+
+	/*scheme = ecalloc(2, sizeof(Clr *));*/
+	/*for (i = 0; i < 2; i++)*/
+		/*scheme[i] = drw_scm_create(drw, i, 3);*/
+
+
 	/* init bars */
 	updatebars();
 	updatestatus();
@@ -2189,7 +2204,6 @@ zoom(const Arg *arg)
 int
 main(int argc, char *argv[])
 {
-    cl_refresh();
 	if (argc == 2 && !strcmp("-v", argv[1]))
 		die("dwm-"VERSION);
 	else if (argc != 1)

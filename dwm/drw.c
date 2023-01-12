@@ -7,6 +7,7 @@
 
 #include "drw.h"
 #include "util.h"
+#include "cl.h"
 
 #define UTF_INVALID 0xFFFD
 #define UTF_SIZ     4
@@ -211,7 +212,7 @@ drw_scm_create(Drw *drw, int scm_index, size_t clrcount)
 	Clr *ret;
 
 	/* need at least two colors for a scheme */
-	if (!drw || !clrnames || clrcount < 2 || !(ret = ecalloc(clrcount, sizeof(XftColor))))
+	if (!drw || clrcount < 2 || !(ret = ecalloc(clrcount, sizeof(XftColor))))
 		return NULL;
 
 	for (i = 0; i < clrcount; i++)

@@ -15,6 +15,7 @@ static char color_sel_bg[8]     = { 0 };
 static char color_sel_border[8] = { 0 };
 
 void refresh_dmenucmd(char* fg, char* bg, char* sfg, char* sbg);
+void refresh_scheme(void);
 
 void cl_refresh(void)
 {
@@ -37,6 +38,7 @@ void cl_refresh(void)
     memcpy(color_sel_border, l, 7);
 
     refresh_dmenucmd(color_fg, color_bg, color_sel_fg, color_sel_bg);
+    refresh_scheme();
 
     free(l);
     fclose(f);

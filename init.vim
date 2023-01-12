@@ -15,6 +15,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'PhilRunninger/nerdtree-buffer-ops'
 "Plug 'vim-autoformat/vim-autoformat'
 Plug 'benwernicke/duum'
+Plug 'chrisbra/colorizer'
 
 call plug#end()
 

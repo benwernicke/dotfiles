@@ -11,14 +11,13 @@ static const int topbar = 1;            /* 0 means bottom bar */
 static char* fonts[] = {"Fira Code:pixelsize=16:antialias=true:autohint=true",};
 static char dmenufont[] = "Fira Code:pixelsize=16:antialias=true:autohint=true";
 
-static const char norm_fg[] = "#eeeeee";
-static const char norm_bg[] = "#282c34";
-static const char norm_border[] = "#282c34";
+static const char norm_fg[] = "#fc46ed";
+static const char norm_bg[] = "#1b1b1b";
+static const char norm_border[] = "#1b1b1b";
 
-static const char sel_fg[] = "#282c34";
-//static const char sel_bg[] = "#a9dc76";
-static const char sel_bg[] = "#34ed37";
-static const char sel_border[] = "#a9dc76";
+static const char sel_fg[] = "#1b1b1b";
+static const char sel_bg[] = "#fc46ed";
+static const char sel_border[] = "#fc46ed";
 
 static const char* colors[][3] = {
     /*               fg           bg         border                         */
@@ -27,8 +26,11 @@ static const char* colors[][3] = {
 };
 
 /* tagging */
-static const char* tags[] = { "ʕ·͡ᴥ·ʔ", "ԅ(≖‿≖ԅ)", "(╯°□°)╯", "(^з^)♪♬",
-    "O=('-'Q)", "ʕ♥ᴥ♥ʔ" };
+//static const char* tags[] = { "ʕ·͡ᴥ·ʔ", "ԅ(≖‿≖ԅ)", "(╯°□°)╯", "(^з^)♪♬",
+    //"O=('-'Q)", "ʕ♥ᴥ♥ʔ" };
+
+static const char* tags[] = { "[0]", "[1]", "[2]", "[3]",
+    "[4]", "[5]" };
 
 
 

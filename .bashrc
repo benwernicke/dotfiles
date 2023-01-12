@@ -4,6 +4,8 @@
 # _| |_) | (_| \__ \ | | | | | (__
 #(_)_.__/ \__,_|___/_| |_|_|  \___|
 
+export PATH="~/Scripts:"$PATH
+
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return

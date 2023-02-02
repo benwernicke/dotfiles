@@ -5,8 +5,6 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-//static char* font = "Fira Code:pixelsize=19:antialias=true:autohint=true";
-//static char* font2 = "Fira Code:pixelsize=19:antialias=true:autohint=true";
 static char *font = "Liberation Mono:pixelsize=22:antialias=true:autohint=true";
 static char *font2 = "Liberation Mono:pixelsize=22:antialias=true:autohint=true";
 static int borderpx = 2;
@@ -96,33 +94,35 @@ char* termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
+//#46d363
+
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"black",
-	"#ff6c6b",
-	"#34ed37",
-	"#fcdc00",
-	"#00c2ff",
-	"#fc46ed",
-	"#33dce7",
-	"#eeeeee",
+    "black",
+    "#ff6c6b",      // red
+    "#34ed37",      // green
+    "#fcdc00",      // yellow
+    "#00c2ff",      // blue
+    "#fc46ed",      // magenta
+    "#33dce7",      // cyan
+    "#eeeeee",      // white
 
 	/* 8 bright colors */
-	"black",
-	"#ff6c6b",
-	"#34ed37",
-	"#fcdc00",
-	"#00c2ff",
-	"#fc46ed",
-	"#33dce7",
-	"#eeeeee",
+    "black",
+    "#ff6c6b",      // red
+    "#34ed37",      // green
+    "#fcdc00",      // yellow
+    "#00c2ff",      // blue
+    "#fc46ed",      // magenta
+    "#33dce7",      // cyan
+    "#eeeeee",      // white
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
-	"#eeeeee", /* default foreground colour */
+	"#e9e9e9", /* default foreground colour */
 	//"#282c34", [> default background colour <]
 	"#1b1b1b", /* default background colour */
 };

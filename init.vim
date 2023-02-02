@@ -13,7 +13,6 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'preservim/nerdtree'
 Plug 'vimwiki/vimwiki'
 Plug 'PhilRunninger/nerdtree-buffer-ops'
-"Plug 'vim-autoformat/vim-autoformat'
 Plug 'benwernicke/duum'
 Plug 'chrisbra/colorizer'
 
@@ -96,22 +95,12 @@ nmap <leader>tff :Telescope find_files<cr>
 nmap <leader>tlg :Telescope live_grep<cr>
 
 
-nmap tt :terminal<cr>i
-
-autocmd FileType c nmap <leader>lr :!./cbuild && ./out<cr>
-autocmd FileType c nmap <leader>lR :!./cbuild && ./out
-autocmd FileType c nmap <leader>lg ttgdb -tui out<cr>
-autocmd FileType c nmap <leader>lc :! ./cbuild clean
-autocmd FileType c nmap <leader>cf :r! sgen clang_format<cr>
-
-autocmd FileType c nmap <leader>sg :! squirrel get
-autocmd FileType c nmap <leader>su :! squirrel update
-autocmd FileType c nmap <leader>ec :vs cbuild.c
+nmap tt <leader><Return>:terminal<cr>i
 
 autocmd FileType lisp nmap <leader>lr :! clisp %<cr>
 
 autocmd FileType latex nmap <leader>la :r! sgen latex_article<cr>
-autocmd FileType latex nmap <leader>lr :! xelatex % && pkill -HUP mupdf<cr>
+autocmd FileType latex nmap <leader>lr :! make && pkill -HUP mupdf<cr>
 autocmd FileType latex nmap <leader>ls :! mupdf $(echo % \| rev \| cut -c4- \| rev)pdf & disown<cr><cr>
 
 nnoremap J :m .+1<CR>==
@@ -129,3 +118,9 @@ vmap <C-l> <C-w>l
 vmap <C-h> <C-w>h
 nmap <leader>nh :noh<cr>
 nmap <leader>v :vs<cr>
+
+vmap " di"<Esc>p
+vmap ( di(<Esc>p
+vmap [ di[<Esc>p
+vmap { di{<Esc>p
+vmap ' di'<Esc>p

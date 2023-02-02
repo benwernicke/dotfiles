@@ -24,6 +24,7 @@ alias fixme='grep TODO --line-number -H -R'
 
 alias ss='shutdown 0'
 alias sr='reboot'
+alias duplicate-screen='xrandr --output HDMI-1 --same-as eDP-1'
 
 # Because I am stupid
 alias v='nvim'

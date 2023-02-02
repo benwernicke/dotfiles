@@ -1034,26 +1034,29 @@ int
 fake_signal(void)
 {
 	char fsignal[256];
-	char indicator[9] = "fsignal:";
-	char str_sig[50];
-	int i, len_str_sig;
-	size_t len_fsignal, len_indicator = strlen(indicator);
+	char indicator[] = "fsignal:";
+	size_t len_fsignal;
+    const size_t len_indicator = LENGTH(indicator) - 1;
+    int i;
 
 	// Get root name property
 	if (gettextprop(root, XA_WM_NAME, fsignal, sizeof(fsignal))) {
 		len_fsignal = strlen(fsignal);
 
 		// Check if this is indeed a fake signal
-		if (len_indicator > len_fsignal ? 0 : strncmp(indicator, fsignal, len_indicator) == 0) {
+		if (len_indicator < len_fsignal && strncmp(indicator, fsignal, len_indicator) == 0) {
 
 			// Check if a signal was found, and if so handle it
-			for (i = 0; i < LENGTH(signals); i++)
-				if (strncmp(str_sig, signals[i].sig, len_str_sig) == 0 && signals[i].func)
-					signals[i].func();
+            char* str_sig = fsignal + len_indicator;
+            for (i = 0; i < LENGTH(signals); i++) {
+                if (strcmp(str_sig, signals[i].sig) == 0 && signals[i].func) {
+                    signals[i].func();
+                }
+            }
 
 			// A fake signal was sent
 			return 1;
-		}
+        }
 	}
 
 	// No fake signal was sent, so proceed with update
